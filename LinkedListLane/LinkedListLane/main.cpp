@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+#include <cmath>
 #define out std::cout
 #define endl std::endl
 
@@ -116,9 +117,36 @@ namespace lane {
 namespace linkedList {
     
     //Some basic Mathematical functions.
-    int square(int a){return a*a;}
-    int cube(int a){return a*a*a;}
-    int quad(int a){return a*a*a*a;}
+    int square(int a){return pow(a, 2);}
+    int cube(int a){return pow(a, 3);}
+    int quad(int a){return pow(a, 4);}
+    int pent(int a){return pow(a, 5);}
+    int hex(int a){return pow(a, 6);}
+    int hept(int a){return pow(a, 7);}
+    int oct(int a){return pow(a, 8);}
+    
+    
+    int callFunction(int n,int val){
+        switch (n) {
+            case 1:
+                return square(val);
+            case 2:
+                return cube(val);
+            case 3:
+                return quad(val);
+            case 4:
+                return pent(val);
+            case 5:
+                return hex(val);
+            case 6:
+                return hept(val);
+            case 7:
+                return oct(val);
+            default:
+                return square(val);
+                break;
+        }
+    }
     
     
     //We assume tempValue contains the math functions next value.
@@ -175,18 +203,7 @@ namespace linkedList {
         }
         last = a;
         cVal = cVal+1;
-        switch (n) {
-            case 1:
-                tempValue = linkedList::square(cVal);
-                break;
-            case 2:
-                tempValue = linkedList::cube(cVal);
-            case 3:
-                tempValue = linkedList::quad(cVal);
-            default:
-                tempValue = linkedList::square(cVal);
-                break;
-        }
+        tempValue = callFunction(n, cVal);
     }
     
     /* Adds N nodes in Linked List */
