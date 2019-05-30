@@ -80,15 +80,19 @@ namespace lane {
     
     //Searches for a lane element which is just less than the id we are looking for.
     Lane* search(int n){
+        //Something is flawed.
         if (firstL != NULL) {
             tempL = firstL;
             Lane * back = tempL;
             while (tempL != lastL) {
-                if (tempL->getUp()->getId() >= n) {
-                    return back;
-                }
-                back = tempL;
                 tempL= tempL->getNext();
+                if (tempL->getUp()->getId() >= n) {
+//                    out<<"LOG : ID : "<<tempL->getUp()->getId();
+                    return back;
+                }else{
+//                    out<<"LOG : ID2 : "<<tempL->getUp()->getId();
+                    back = tempL;
+                }
             }
             return tempL;
         }else{return NULL;}
